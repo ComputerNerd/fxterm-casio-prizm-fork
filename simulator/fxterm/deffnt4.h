@@ -1,0 +1,16 @@
+#define ____ 0
+#define ___X 1
+#define __X_ 2
+#define __XX 3
+#define _X__ 4
+#define _X_X 5
+#define _XX_ 6
+#define _XXX 7
+#define X___ 8
+#define X__X 9
+#define X_X_ 10
+#define X_XX 11
+#define XX__ 12
+#define XX_X 13
+#define XXX_ 14
+#define XXXX 15
