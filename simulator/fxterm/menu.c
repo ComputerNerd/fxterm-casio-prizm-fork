@@ -128,34 +128,34 @@ MENU_STATUS MenuRun(MenuContext *pContext,char *pszTitle,void **ppContext)
 		InitScreen(&gFont6x8);
 		EnableCursor(0);
 
-		puts(pszTitle);
-		putchar('\n');
+		putsFxterm(pszTitle);
+		putcharFxterm('\n');
 		for(i=0;i<pContext->miMenuItems;i++)
 		{
 			pCurentItem = pContext->mppList[i];
-			putchar('\n');
+			putcharFxterm('\n');
 			if(i == iSelected)
 			{
-				puts("\33[7m");
+				putsFxterm("\33[7m");
 			}
-			puts(pCurentItem->mpszName);
-			putchar(' ');
+			putsFxterm(pCurentItem->mpszName);
+			putcharFxterm(' ');
 			switch(pCurentItem->miType)
 			{
 			case MENU_TYPE_EXE:break;
 			case MENU_TYPE_CHECK_BOX:
-				putchar('[');
-				putchar(pCurentItem->mData.mCheckBox.mpcChecked[0]?'X':' ');
-				putchar(']');
+				putcharFxterm('[');
+				putcharFxterm(pCurentItem->mData.mCheckBox.mpcChecked[0]?'X':' ');
+				putcharFxterm(']');
 				break;
 			case MENU_TYPE_VALUES:
-				putchar(':');
-				puts(pCurentItem->mData.mValues.mppszValues[pCurentItem->mData.mValues.mpcSelectedIndex[0]]);
+				putcharFxterm(':');
+				putsFxterm(pCurentItem->mData.mValues.mppszValues[pCurentItem->mData.mValues.mpcSelectedIndex[0]]);
 				break;
 			}
 			if(i == iSelected)
 			{
-				puts("\33[27m");
+				putsFxterm("\33[27m");
 			}
 		}
 		pCurentItem = pContext->mppList[iSelected];

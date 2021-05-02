@@ -24,7 +24,11 @@ typedef struct{
 } TDispGraph;
 
 #include <fxcg/display.h>
+#include <fxcg/keyboard.h>
+#include <fxcg/rtc.h>
 #include <fxcg/serial.h>
+#include <stdlib.h>
+#include <string.h>
 
 
 
@@ -35,9 +39,6 @@ typedef struct{
 #define dbgprint2(a,b,c)
 #define dbgprint3(a,b,c,d)
 #define dbgprint4(a,b,c,d,e)
-
-#define GetVRAMAddress() ((unsigned short *)0xA8000000)
-#define NULL 0
 
 #define KEY_PRGM_OPTN 68
 #define KEY_PRGM_MENU 48

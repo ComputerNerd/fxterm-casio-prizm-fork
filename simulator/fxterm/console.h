@@ -1,12 +1,8 @@
 #include "fonts.h"
 
-#ifdef CG_EMULATOR
-#undef putchar
-#endif 
+int putcharFxterm(char c);
 
-int putchar(char c);
-
-int puts(const char *pszText);
+int putsFxterm(const char *pszText);
 
 #define CK_UP		'\20'
 #define CK_DOWN		'\16'

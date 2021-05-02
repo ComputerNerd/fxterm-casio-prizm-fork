@@ -6,11 +6,7 @@
  * This code is in the public domain.
  */
 
-/*
 #include <string.h>
-#include <stdlib.h>
-#include <stdio.h>
-*/
 #include "vtparse.h"
 
 vtparse_t gParser;
@@ -21,17 +17,6 @@ void vtparse_init(void)
     gParser.intermediate_chars[0] = '\0';
     gParser.num_params            = 0;
     gParser.ignore_flagged        = 0;
-}
-
-static int strlen(const char*pszText)
-{
-	int i = 0;
-	while(pszText[0])
-	{
-		i++;
-		pszText++;
-	}
-	return i;
 }
 
 static void do_action(vtparse_action_t action, char ch)

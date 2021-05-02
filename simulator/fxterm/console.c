@@ -419,7 +419,7 @@ void InitScreen(const FONT *pFont)
 	{
 		VRAM = (unsigned short *) GetVRAMAddress();
 		vtparse_init();
-		EnableColor(1);
+		Bdisp_EnableColor(1);
 	}
 	gScreen.mpFontData = pFont->mpcFontData;
 	gScreen.mpCursorData = pFont->mpcCursorData;
@@ -934,7 +934,7 @@ char TranslateChar(char cRawChar)
 	return 0;
 }
 
-int putchar(char c)
+int putcharFxterm(char c)
 {
 	HideCursor();
 	vtparse((unsigned char)c);
@@ -942,7 +942,7 @@ int putchar(char c)
 	return (unsigned char)c;
 }
 
-int puts(const char *pszText)
+int putsFxterm(const char *pszText)
 {
 	HideCursor();
 	while(pszText[0])

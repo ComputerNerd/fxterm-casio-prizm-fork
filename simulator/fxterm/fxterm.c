@@ -110,8 +110,8 @@ static const char *pszWelcomeText="\33[1;37m"
 static void Message(const char *pszMessage)
 {
 	InitScreen(&gFont6x8);
-	puts(pszMessage);
-	puts("\n\nPress EXE to continue");
+	putsFxterm(pszMessage);
+	putsFxterm("\n\nPress EXE to continue");
 	while(TranslateChar(PRGM_GetKey()) != CK_ENTER);
 }
 
@@ -152,7 +152,7 @@ static void Terminal()
 				Serial_WriteSingle(c);
 			if(gcLocalEcho)
 			{
-				putchar(c);//local echo
+				putcharFxterm(c);//local echo
 			}
 			dbgprint1("<%c>",c);
 		}
@@ -164,7 +164,7 @@ static void Terminal()
 			while(iWrote < iRead)
 			{
 				while((iRead < REC_BUF_SIZE) && (0 == Serial_ReadSingle(aRecBuffer+iRead)))iRead++;
-				putchar(aRecBuffer[iWrote]);iWrote++;
+				putcharFxterm(aRecBuffer[iWrote]);iWrote++;
 			}
 		}
 	}
@@ -174,7 +174,7 @@ static void Terminal()
 void main( void )
 {
 	MenuContext aMenuContext = {0};
-	EnableColor(1);
+	Bdisp_EnableColor(1);
 	if(CreateMenu(&aMenuContext))
 	{
 		Message("\33[1;31mError while creating menu");
