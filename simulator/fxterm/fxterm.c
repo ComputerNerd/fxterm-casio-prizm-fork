@@ -14,7 +14,7 @@ static const char *gCommStopBitsNames[]={"1","2",NULL};
 
 static const char *gFontNames[]={"4x6","5x6","6x8","8x8",NULL};
 static const FONT *gFonts[]={&gFont4x6,&gFont5x6,&gFont6x8,&gFont8x8};
-static unsigned char gcFontIndex = 2;//gFont6x8
+static unsigned char gcFontIndex = 3;//gFont8x8
 static char gcLocalEcho = 0;
 static char gcCursorAlwaysVisible = 0;
 

@@ -125,7 +125,7 @@ MENU_STATUS MenuRun(MenuContext *pContext,char *pszTitle,void **ppContext)
 		int i;
 		char key;
 		MenuItem *pCurentItem;
-		InitScreen(&gFont6x8);
+		InitScreen(&gFont8x8);
 		EnableCursor(0);
 
 		putsFxterm(pszTitle);
