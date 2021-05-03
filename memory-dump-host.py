@@ -47,7 +47,7 @@ with serial.Serial(sys.argv[1], 115200, timeout = 2) as ser:
                         return read_data
                     else:
                         print('ERROR: checksum mismatch expected: %X but got %X' % (expected_checksum, actual_checksum))
-                        return get_data(n_tries + 1)
+                        return get_data(fetch_bytes, addr, n_tries + 1)
                 else:
                     print('Requested rejected by the calculator.', calculator_response, calculator_response_handled)
             start_byte = i * request_length
