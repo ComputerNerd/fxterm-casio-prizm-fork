@@ -3,9 +3,9 @@ CPP=sh3eb-elf-g++
 OBJCOPY=sh3eb-elf-objcopy
 MKG3A=mkg3a
 RM=rm
-CFLAGS=-m4a-nofpu -mb -fgcse-sm -fgcse-las -fgcse-after-reload -O3 -fmerge-all-constants -fno-builtin-malloc -fno-builtin-free -fno-builtin-realloc -I. -mhitachi -flto -fuse-linker-plugin -Wall -Wextra -I../../../../include -lgcc -L../../../../lib -I../../simulator/fxterm/
+CFLAGS=-m4a-nofpu -mb -fgcse-sm -fgcse-las -fgcse-after-reload -O3 -fmerge-all-constants -fno-builtin-malloc -fno-builtin-free -fno-builtin-realloc -I. -mhitachi -flto -fuse-linker-plugin -Wall -Wextra -I../../../../include -lgcc -L../../../../lib -I../../simulator/fxterm/ -I../../zlib-1.2.11/
 LDFLAGS=$(CFLAGS) -nostartfiles -T../../../../toolchain/prizm.x -Wl,-static -Wl,-gc-sections -lgcc -lfxcg -lc
-CSOURCES=$(wildcard ../../simulator/fxterm/*.c)
+CSOURCES=$(wildcard ../../simulator/fxterm/*.c) ../../zlib-1.2.11/crc32.c
 OBJECTS=$(CSOURCES:.c=.o)
 PROJ_NAME=FXTERM
 BIN=$(PROJ_NAME).bin

@@ -1,0 +1,5 @@
+This program has a dependency on zlib but you don't need to build it because we only build crc32.c.
+
+1. Download the zlib library from: https://www.zlib.net/ and be sure to use version 1.2.11 or later.
+
+2. Extract the zlib archive in the same folder that this file (COMPILE) is in.
