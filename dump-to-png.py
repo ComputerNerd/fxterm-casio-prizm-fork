@@ -12,7 +12,7 @@ output_fname_base, output_fname_ext = os.path.splitext(output_fname)
 with open(sys.argv[1], 'rb') as f:
     raw_data_all = f.read()
 
-bytes_per_block = 1327104
+bytes_per_block = 1572864
 for i in range(0, len(raw_data_all), bytes_per_block):
     raw_data = raw_data_all[i : i + bytes_per_block]
 
