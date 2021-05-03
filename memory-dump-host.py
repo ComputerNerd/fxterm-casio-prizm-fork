@@ -47,15 +47,29 @@ with serial.Serial(sys.argv[1], 115200, timeout = 2) as ser:
                         return read_data
                     else:
                         print('ERROR: checksum mismatch expected: %X but got %X' % (expected_checksum, actual_checksum))
-                        return get_data(fetch_bytes, addr, n_tries + 1)
+                        # Try splitting it up into half.
+                        fb_half = fetch_bytes // 2
+                        if (fetch_bytes % fb_half) == 0:
+                            raw_tmp = b''
+                            for i in range(2):
+                                half_data = get_data(fb_half, addr + (fb_half * i), n_tries + 1)
+                                if half_data is None:
+                                    print('Wrote unknown starting at', addr + (fb_half * i), 'with a length of', fb_half)
+                                    half_data = b'U' * fb_half
+                                raw_tmp += half_data
+                            return raw_tmp
+                        else:
+                            raw_tmp = get_data(fetch_bytes, addr, n_tries + 1)
+                            if raw_tmp is None:
+                                print('Wrote unknown starting at', addr, 'with a length of', fetch_bytes)
+                                return b'U' * fetch_bytes # U stands for unknown.
+                            else:
+                                return raw_tmp
+
                 else:
                     print('Requested rejected by the calculator.', calculator_response, calculator_response_handled)
             start_byte = i * request_length
             end_byte = min(start_byte + request_length, bytes_to_dump)
             req_len = end_byte - start_byte
             res = get_data(req_len, start_address + start_byte)
-            if res is None:
-                print('Wrote unknown starting at', start_byte, 'with a length of', req_len)
-                f.write(b'U' * req_len) # U for unknown.
-            else:
-                f.write(res)
+            f.write(res)
